@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import numpy
 import s4l_v1.document as document
 import s4l_v1.materials.database as database
