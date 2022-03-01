@@ -23,48 +23,6 @@ try:
 	quasi_static_setup_settings = [x for x in simulation.AllSettings if isinstance(x, emlf.QuasiStaticSetupSettings) and x.Name == "Setup"][0]
 	quasi_static_setup_settings.Frequency = 2500.0, units.Hz
 
-	# Adding a new MaterialSettings
-	material_settings = emlf.MaterialSettings()
-	components = [entity__thalamus]
-	mat = database["IT'IS 4.0"]["Thalamus"]
-	if mat is not None:
-		simulation.LinkMaterialWithDatabase(material_settings, mat)
-	else:
-		# Fallback if material is not found
-		material_settings.Name = "Thalamus"
-		material_settings.MassDensity = 1044.5, Unit("kg/m^3")
-		material_settings.ElectricProps.Conductivity = 0.10431635344104477, Unit("S/m")
-		material_settings.ElectricProps.RelativePermittivity = 78103.94438829373
-	material_settings.ElectricProps.Conductivity = 0.10431635344104477, Unit("S/m")
-	material_settings.ElectricProps.RelativePermittivity = 78103.94438829373
-	simulation.Add(material_settings, components)
-
-	# Adding a new MaterialSettings
-	material_settings = emlf.MaterialSettings()
-	components = [entity__commissura_anterior]
-	mat = database["IT'IS 4.0"]["Commissura Anterior"]
-	if mat is not None:
-		simulation.LinkMaterialWithDatabase(material_settings, mat)
-	else:
-		# Fallback if material is not found
-		material_settings.Name = "Commissura Anterior"
-		material_settings.MassDensity = 1041.0, Unit("kg/m^3")
-		material_settings.ElectricProps.Conductivity = 0.06453647163317279, Unit("S/m")
-		material_settings.ElectricProps.RelativePermittivity = 34281.99510945726
-	material_settings.ElectricProps.Conductivity = 0.06453647163317279, Unit("S/m")
-	material_settings.ElectricProps.RelativePermittivity = 34281.99510945726
-	simulation.Add(material_settings, components)
-
-	# Editing MaterialSettings "Air"
-	material_settings = [x for x in simulation.AllSettings if isinstance(x, emlf.MaterialSettings) and x.Name == "Air"][0]
-	mat = database["IT'IS 4.0"]["Air"]
-	if mat is not None:
-		simulation.LinkMaterialWithDatabase(material_settings, mat)
-	else:
-		# Fallback if material is not found
-		components = [component__background, entity__air_internal]
-		simulation.Add(material_settings, components)
-		material_settings.MassDensity = 1.16409155293818, Unit("kg/m^3")
 
 	# Adding a new MaterialSettings
 	material_settings = emlf.MaterialSettings()
@@ -106,22 +64,6 @@ try:
 		material_settings.ElectricProps.RelativePermittivity = 78103.94438829373
 	material_settings.ElectricProps.Conductivity = 0.10431635344104477, Unit("S/m")
 	material_settings.ElectricProps.RelativePermittivity = 78103.94438829373
-	simulation.Add(material_settings, components)
-
-	# Adding a new MaterialSettings
-	material_settings = emlf.MaterialSettings()
-	components = [entity__commissura_posterior]
-	mat = database["IT'IS 4.0"]["Commissura Posterior"]
-	if mat is not None:
-		simulation.LinkMaterialWithDatabase(material_settings, mat)
-	else:
-		# Fallback if material is not found
-		material_settings.Name = "Commissura Posterior"
-		material_settings.MassDensity = 1041.0, Unit("kg/m^3")
-		material_settings.ElectricProps.Conductivity = 0.06453647163317279, Unit("S/m")
-		material_settings.ElectricProps.RelativePermittivity = 34281.99510945726
-	material_settings.ElectricProps.Conductivity = 0.06453647163317279, Unit("S/m")
-	material_settings.ElectricProps.RelativePermittivity = 34281.99510945726
 	simulation.Add(material_settings, components)
 
 	# Adding a new MaterialSettings
